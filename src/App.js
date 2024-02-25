@@ -8,6 +8,7 @@ import Mobile from "./pages/Mobile";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import ViewProductPage from "./pages/ViewProductPage";
+import SignOutPage from "./pages/SignOutPage";
 import CartPage from "./pages/CartPage";
 function App() {
   return (
@@ -18,10 +19,12 @@ function App() {
           <Route path="/login" element={<LoginPage/>}/>
           <Route path="/verify" element={<VerifyPage/>}/>
           <Route path="/" element={<DashboardPage/>}/>
+          <Route path="/signout" element={<SignOutPage/>}/>
 
           <Route path="/home" element={<HomePage/>}/>
           <Route path="/products" element={<ProductPage/>}/>
           <Route path="/products/:mobileId" element={<ViewProductPage/>}/>
+         
           <Route path="/cart" element={<CartPage/>}/>
           {/* <Route path="/dashboard" element={<DashboardPage/>}/> */}
           {/* <Route path="/verify" element={<VerifyPage/>}/> */}

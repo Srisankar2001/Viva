@@ -52,6 +52,7 @@ export default function RegisterPage(){
                 //store panna
                 // storeUserData(response.data.idToken);
                 storeUserData(response.data.data.accessToken);
+                
                 // navigate(`/verify`);
             }).catch((err)=>{
                 // if(err.response.data.error.message=="EMAIL_EXISTS"){

@@ -16,6 +16,7 @@ const NavBar=(props)=>{
                     {!isAuthenticated()?<li><Link className="nav-link" to="/login">Login</Link></li>:null}
                     {/* {?<li className="nav-item"><Link className="nav-link" to="/dashboard" >Dashboard</Link></li>:null} */}
                     {isAuthenticated()?<li><a className="nav-link" onClick={props.logoutUser} style={{cursor:"pointer"}}>Logout</a></li>:null}
+                    {isAuthenticated()?<li className="nav-item"><Link className="nav-link" to="/signout">SignOut</Link></li>:null}
                 </ul>
             </div>
         </nav>

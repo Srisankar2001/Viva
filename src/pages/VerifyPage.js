@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import NavBar from '../components/NavBar';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation,useNavigate } from 'react-router-dom';
 import { VerifyApi } from '../services/Api';
 import { getUserData } from '../services/Storage';
 
@@ -9,6 +9,7 @@ export default function VerifyPage(){
    
 
     // console.log(userToken)
+    const navigate=useNavigate();
 
     const initiaiStateErrors={
         otp:{required:false},
@@ -45,15 +46,27 @@ export default function VerifyPage(){
           setLoading(true);
           //sending login API request
           // 
-          
           VerifyApi(input).then(response => {
             if (response.data.status==200) {
-                // Set verification status message
-                setErrors({...errors1, verificationStatus: "Email verified successfully"});
+                  if(response.data.data){
+                      // Set verification status message
+                    setErrors({...errors1, verificationStatus:response.data.data});
+                    navigate(`/`)
+
+                  }
+                  if(response.data.error){
+                    // Set verification status message
+                  setErrors({...errors1, verificationStatus:response.data.error});
+                }
+
+                
             } else {
                 // Handle verification failure
                 throw new Error("Verification failed");
             }
+            
+          
+        
             
 
         })
@@ -77,7 +90,12 @@ export default function VerifyPage(){
 
     return(
         <div>
-          <NavBar/>
+         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+            <a className="navbar-brand" href="#">LUCKY MOBILES</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+            </button>
+        </nav>
           <section className="verify-block">
               <div className="container">
                   <div className="row ">

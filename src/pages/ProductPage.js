@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
+import { isAuthenticated, logout } from "../services/Auth"
+import { Navigate, useNavigate } from "react-router-dom"
 import './ProductPage.css'
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -9,6 +11,9 @@ function ProductPage() {
     const [brands, setBrands] = useState([]);
     const [mobiles, setMobiles] = useState([]);
     const [selectedBrand, setSelectedBrand] = useState(null);
+
+    ////T/////////
+    const navigate= useNavigate()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,6 +29,12 @@ function ProductPage() {
 
         fetchData();
     }, [selectedBrand]);
+    ///////////Tharsi//////////////
+    const logoutUser=()=>{
+        logout();
+        navigate('/login')
+    }
+    //////////////////////
 
     const handleBrandClick = (brandId) => {
         setSelectedBrand(brandId);
@@ -39,7 +50,7 @@ function ProductPage() {
 
     return (
         <div>
-            <NavBar />
+            <NavBar logoutUser={logoutUser}/>
             <div className="container-fluid">
                 <div className="row">
                     <nav className="navbar navbar-expand-lg bg-body-tertiary navbar-left col-2" id="navbar">
