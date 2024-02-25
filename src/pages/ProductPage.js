@@ -5,6 +5,7 @@ import { Navigate, useNavigate } from "react-router-dom"
 import './ProductPage.css'
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { isAuthenticated } from "../services/Auth";
 
 function ProductPage() {
     const [brands, setBrands] = useState([]);
@@ -82,7 +83,14 @@ function ProductPage() {
                                             <h5 className="card-title">{mobile.name}</h5>
                                             <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                             <div className="button-container" style={{ display: "none", position: "absolute", bottom: "10px", left: "50%", transform: "translateX(-50%)" }}>
-                                                <a href="#" className="btn btn-primary mx-5">Cart</a>
+                                                {isAuthenticated() ?
+                                                    <Link to='/cart'>
+                                                        <button className="btn btn-secondary">Cart</button>
+                                                    </Link>
+                                                    :
+                                                    <Link to='/login'>
+                                                        <button className="btn btn-secondary">Cart</button>
+                                                    </Link> }
                                                 <Link to={`${mobile.id}`}>
                                                     <button className="btn btn-secondary">View</button>
                                                 </Link>

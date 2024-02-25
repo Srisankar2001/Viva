@@ -20,8 +20,7 @@ function ViewProductPage() {
                 // Parse the JSON object
                 const jsonObject = JSON.parse(cleanedJsonString);
 
-                console.log(jsonObject);
-
+                console.log(Object.keys(jsonObject));
                 setMobile({ ...response.data.data, description: jsonObject });
             } catch (error) {
                 console.log(error);
@@ -47,6 +46,13 @@ function ViewProductPage() {
                 <h1>{mobile.name}</h1>
                 <h3>{mobile.price} LKR</h3>
                 <p>Display: {mobile.description.Display}</p>
+                <p>Performance: {mobile.description.Performance}</p>
+                <p>Ram: {mobile.description.Ram}</p>
+                <p>Storage: {mobile.description.Storage}</p>
+                <p>Battery Life: {mobile.description["Battery Life"]}</p>
+                <p>Camera System: {mobile.description["Camera System"]}</p>
+                <p>Other Features: {mobile.description["Other Features"]}</p>
+                <p>Colors: {mobile.description.Colors}</p>
             </div>
         </div>
     );

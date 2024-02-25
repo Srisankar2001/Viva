@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import ViewProductPage from "./pages/ViewProductPage";
 import SignOutPage from "./pages/SignOutPage";
+import CartPage from "./pages/CartPage";
 function App() {
   return (
     <div className="App">
@@ -23,7 +24,8 @@ function App() {
           <Route path="/home" element={<HomePage/>}/>
           <Route path="/products" element={<ProductPage/>}/>
           <Route path="/products/:mobileId" element={<ViewProductPage/>}/>
-          {/* <Route path="/cart"/> */}
+         
+          <Route path="/cart" element={<CartPage/>}/>
           {/* <Route path="/dashboard" element={<DashboardPage/>}/> */}
           {/* <Route path="/verify" element={<VerifyPage/>}/> */}
           {/* <Route path="/" element={<h1>Home</h1>}/> */}
